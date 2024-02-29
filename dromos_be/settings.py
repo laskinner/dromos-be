@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "nodes",
     "edges",
     "comments",
+    "subscriptions",
 ]
 
 MIDDLEWARE = [

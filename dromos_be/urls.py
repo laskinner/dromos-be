@@ -11,4 +11,5 @@ urlpatterns = [
     path("api/", include("nodes.urls")),
     path("api/graph-data/<str:area_slug>/", GraphData.as_view(), name="graph-data"),
     path("api/", include("comments.urls")),
+    path("api/", include("subscriptions.urls")),
 ]
