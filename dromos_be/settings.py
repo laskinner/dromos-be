@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "profiles",
     "areas",
     "nodes",
+    "edges",
 ]
 
 MIDDLEWARE = [
