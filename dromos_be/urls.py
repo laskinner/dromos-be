@@ -5,5 +5,6 @@ from rest_framework.authtoken import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include("profiles.urls")),
-    path("api-auth/", include("rest_framework.urls")),  # Add this line
+    path("api-auth/", include("rest_framework.urls")),
+    path("api/", include("areas.urls")),
 ]
