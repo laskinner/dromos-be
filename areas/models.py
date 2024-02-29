@@ -17,7 +17,7 @@ class Area(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=255, unique=True)
     content = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to="areas_images/", blank=True, null=True)
+    image = models.ImageField(upload_to="images/", default="../ik2vexictnekhozluivi")
     slug = models.SlugField(max_length=255, unique=True, blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="public")
     contributors = models.ManyToManyField(

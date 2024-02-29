@@ -7,4 +7,5 @@ urlpatterns = [
     path("api/", include("profiles.urls")),
     path("api-auth/", include("rest_framework.urls")),
     path("api/", include("areas.urls")),
+    path("api/", include("nodes.urls")),
 ]
