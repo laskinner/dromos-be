@@ -27,7 +27,10 @@ class Node(models.Model):
 
     # Assumes a many-to-amy relationship with other nodes
     caused_by = models.ManyToManyField(
-        "self", symmetrical=False, related_name="causes", blank=True
+        "self",
+        symmetrical=False,
+        related_name="causes",  # Outgoing edges: Nodes that this node causes
+        blank=True,
     )
 
     def __str__(self):
