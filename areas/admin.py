@@ -1,7 +1,15 @@
 from django.contrib import admin
 from .models import Area
+from permissions.models import UserAreaAccess
 
 
+# Define the inline admin for UserAreaAccess
+class UserAreaAccessInline(admin.TabularInline):
+    model = UserAreaAccess
+    extra = 1  # Number of extra forms to display
+
+
+@admin.register(Area)
 class AreaAdmin(admin.ModelAdmin):
     list_display = (
         "name",
@@ -19,6 +27,4 @@ class AreaAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         "slug": ("name",)
     }  # Automatically populate the slug field from the name field
-
-
-admin.site.register(Area, AreaAdmin)
+    inlines = [UserAreaAccessInline]  # Include the inline defined above

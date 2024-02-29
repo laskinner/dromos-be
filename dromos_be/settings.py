@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "edges",
     "comments",
     "subscriptions",
+    "permissions",
 ]
 
 MIDDLEWARE = [

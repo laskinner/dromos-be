@@ -1,12 +1,13 @@
-from django.urls import path, include
+# areas/urls.py
 from rest_framework.routers import DefaultRouter
+from django.urls import path, include
 from .views import AreaViewSet
 
-# Create router and register viewsets with it.
 router = DefaultRouter()
-router.register(r"areas", AreaViewSet)
+router.register(
+    r"areas", AreaViewSet, basename="area"
+)  # Explicitly specify the basename
 
-# API URLs determined automatically by the router.
 urlpatterns = [
     path("", include(router.urls)),
 ]
