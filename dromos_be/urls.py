@@ -5,11 +5,12 @@ from edges.views import GraphData
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include("profiles.urls")),
+    path("api/profiles/", include("profiles.urls")),
     path("api-auth/", include("rest_framework.urls")),
-    path("api/", include("areas.urls")),
-    path("api/", include("nodes.urls")),
+    path("api/areas/", include("areas.urls")),
+    path("api/nodes/", include("nodes.urls")),
     path("api/graph-data/<str:area_slug>/", GraphData.as_view(), name="graph-data"),
-    path("api/", include("comments.urls")),
-    path("api/", include("subscriptions.urls")),
+    path("api/comments/", include("comments.urls")),
+    path("api/subscriptions/", include("subscriptions.urls")),  # Adjusted
+    path("api/permissions/", include("permissions.urls")),  # Adjusted
 ]

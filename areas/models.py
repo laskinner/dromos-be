@@ -20,6 +20,7 @@ class Area(models.Model):
     image = models.ImageField(upload_to="images/", default="../ik2vexictnekhozluivi")
     slug = models.SlugField(max_length=255, unique=True, blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="public")
+    is_public = models.BooleanField(default=True)
     contributors = models.ManyToManyField(
         User, related_name="contributing_areas", blank=True
     )

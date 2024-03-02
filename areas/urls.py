@@ -4,9 +4,8 @@ from django.urls import path, include
 from .views import AreaViewSet
 
 router = DefaultRouter()
-router.register(
-    r"areas", AreaViewSet, basename="area"
-)  # Explicitly specify the basename
+
+router.register(r"", AreaViewSet, basename="areas")
 
 urlpatterns = [
     path("", include(router.urls)),

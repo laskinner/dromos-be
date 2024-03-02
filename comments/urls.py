@@ -4,7 +4,7 @@ from .views import CommentViewSet
 
 # Create a router
 router = DefaultRouter()
-# Register the CommentViewSet with the router
+
 router.register("", CommentViewSet, basename="comment")
 
 urlpatterns = [
