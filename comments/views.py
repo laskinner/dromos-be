@@ -1,8 +1,13 @@
 from rest_framework import viewsets
 from .models import Comment
 from .serializers import CommentSerializer
+from dromos_be.permissions import IsOwnerOrReadOnly
 
 
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+    permission_classes = [IsOwnerOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
