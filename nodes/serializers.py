@@ -7,9 +7,10 @@ class NodeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Node
-        fields = "__all__"  # Include 'comments_count' in your fields
+        fields = "__all__"
 
     def validate_caused_by(self, value):
-        if self.instance in value:
+        # Validate that a node cannot cause itself
+        if self.instance and self.instance in value:
             raise serializers.ValidationError("A node cannot cause itself.")
         return value
