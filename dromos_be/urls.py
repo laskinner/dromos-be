@@ -13,4 +13,6 @@ urlpatterns = [
     path("api/comments/", include("comments.urls")),
     path("api/subscriptions/", include("subscriptions.urls")),  # Adjusted
     path("api/permissions/", include("permissions.urls")),  # Adjusted
+    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 ]
