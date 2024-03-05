@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 if os.path.exists("env.py"):
     import env
@@ -30,12 +31,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-)v5o9qd)r)!-wd3t%q9*e-ly!_71l&zocjw)089@e+mgt7ph8f"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = "DEV" in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "dromos-backend-1542a6a0bcb1.herokuapp.com/"]
 
 
 # Application definition
@@ -59,6 +60,8 @@ INSTALLED_APPS = [
     "comments",
     "subscriptions",
     "permissions.apps.PermissionsConfig",
+    "dj_rest_auth.registration",
+    "corsheaders",
 ]
 
 REST_FRAMEWORK = {
@@ -98,9 +101,23 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
     "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
+    # Cookie settings
+    "AUTH_COOKIE": "my-app-auth",  # The cookie name for the JWT access token
+    "AUTH_COOKIE_DOMAIN": None,  # Use None to use the domain of the request
+    "AUTH_COOKIE_SECURE": True,  # Secure flag (use True if using HTTPS, False otherwise)
+    "AUTH_COOKIE_HTTP_ONLY": True,  # HTTPOnly flag to prevent JS access to the cookie
+    "AUTH_COOKIE_PATH": "/",  # The path of the cookie
+    "AUTH_COOKIE_SAMESITE": "None",  # SameSite attribute for the cookie
+    "REFRESH_COOKIE": "my-refresh-token",  # The cookie name for the JWT refresh token
+    "REFRESH_COOKIE_DOMAIN": None,  # Use None to use the domain of the request
+    "REFRESH_COOKIE_SECURE": True,  # Secure flag (use True if using HTTPS, False otherwise)
+    "REFRESH_COOKIE_HTTP_ONLY": True,  # HTTPOnly flag to prevent JS access to the cookie
+    "REFRESH_COOKIE_PATH": "/api/token/refresh/",  # Path where the refresh token is sent
+    "REFRESH_COOKIE_SAMESITE": "None",  # SameSite attribute for the cookie
 }
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -109,6 +126,18 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+if "CLIENT_ORIGIN" in os.environ:
+    CORS_ALLOWED_ORIGINS = [os.environ.get("CLIENT_ORIGIN")]
+else:
+    # Allow localhost for local development
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^http://localhost:3000$",
+        r"^http://127.0.0.1:3000$",
+    ]
+
+CORS_ALLOW_CREDENTIALS = True
+
 
 ROOT_URLCONF = "dromos_be.urls"
 
@@ -131,16 +160,18 @@ TEMPLATES = [
 WSGI_APPLICATION = "dromos_be.wsgi.application"
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# Database configuration
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+if "DEV" in os.environ:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
-}
-
+else:
+    DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+    print("connected")
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
