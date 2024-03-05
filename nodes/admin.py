@@ -29,10 +29,7 @@ class NodeAdmin(admin.ModelAdmin):
     }  # Automatically populate the slug field from the title field
 
     # Filter_horizontal to make managing node relationships easier in the admin interface.
-    filter_horizontal = (
-        "caused_by",
-        "causes",
-    )
+    filter_horizontal = ("caused_by",)
 
 
 admin.site.register(Node, NodeAdmin)
