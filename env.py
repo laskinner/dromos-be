@@ -12,4 +12,4 @@ os.environ.setdefault(
     "SECRET_KEY", "1IiF9Z1jhjWlgECo_E_xTBUeCOtBZn7GiPCeYc8Vxf5IrW-qhj8"
 )
 
-os.environ["DEV"] = "0"
+os.environ["DEV"] = "1"
