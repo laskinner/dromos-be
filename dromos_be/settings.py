@@ -36,7 +36,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "DEV" in os.environ
 
-ALLOWED_HOSTS = ["localhost", "dromos-backend-1542a6a0bcb1.herokuapp.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", os.environ.get("ALLOWED_HOST"), "127.0.0.1"]
 
 
 # Application definition
