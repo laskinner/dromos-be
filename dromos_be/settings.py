@@ -163,7 +163,7 @@ WSGI_APPLICATION = "dromos_be.wsgi.application"
 
 # Database configuration
 
-if "DEV" in os.environ:
+if os.environ.get("DEV") == "1":
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
