@@ -3,7 +3,6 @@ from django.urls import path, include
 from edges.views import GraphData
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/profiles/", include("profiles.urls")),
@@ -16,4 +15,8 @@ urlpatterns = [
     path("api/permissions/", include("permissions.urls")),
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    # dj-rest-auth URLs for authentication
+    path("dj-rest-auth/", include("dj_rest_auth.urls")),
+    # dj-rest-auth registration URLs
+    path("dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),
 ]
