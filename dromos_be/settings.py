@@ -125,6 +125,10 @@ DJANGO_REST_AUTH = {
     "SESSION_LOGIN": False,
 }
 
+REST_AUTH_SERIALIZERS = {
+    "USER_DETAILS_SERIALIZER": "dromos_be.serializers.CurrentUserSerializer",
+}
+
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",

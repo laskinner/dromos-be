@@ -2,8 +2,10 @@ from django.contrib import admin
 from django.urls import path, include
 from edges.views import GraphData
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from .views import root_route, logout_route
 
 urlpatterns = [
+    path("", root_route),  # This is your root route
     path("admin/", admin.site.urls),
     path("api/profiles/", include("profiles.urls")),
     path("api-auth/", include("rest_framework.urls")),
@@ -15,6 +17,8 @@ urlpatterns = [
     path("api/permissions/", include("permissions.urls")),
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    # Custom logout before the default dj-rest-auth logout to ensure it's used
+    path("dj-rest-auth/logout/", logout_route, name="custom_logout"),
     # dj-rest-auth URLs for authentication
     path("dj-rest-auth/", include("dj_rest_auth.urls")),
     # dj-rest-auth registration URLs
