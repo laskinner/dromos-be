@@ -119,6 +119,12 @@ SIMPLE_JWT = {
     "REFRESH_COOKIE_SAMESITE": "None",  # SameSite attribute for the cookie
 }
 
+REST_USE_JWT = True
+DJANGO_REST_AUTH = {
+    "USE_JWT": True,
+    "SESSION_LOGIN": False,
+}
+
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
