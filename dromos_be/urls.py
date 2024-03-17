@@ -5,7 +5,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .views import root_route, logout_route
 
 urlpatterns = [
-    path("", root_route),  # This is your root route
+    path("", root_route),
     path("admin/", admin.site.urls),
     path("api/profiles/", include("profiles.urls")),
     path("api-auth/", include("rest_framework.urls")),

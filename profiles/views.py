@@ -5,6 +5,8 @@ from dromos_be.permissions import IsOwnerOrReadOnly
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
@@ -37,5 +39,16 @@ def user_details(request):
             "image": request.build_absolute_uri(profile.image.url)
             if profile.image
             else None,
+        }
+    )
+
+
+@login_required
+def current_user_profile(request):
+    user = request.user
+    return JsonResponse(
+        {
+            "username": user.username,
+            "email": user.email,
         }
     )
