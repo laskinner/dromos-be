@@ -1,4 +1,3 @@
-# profiles/views.py
 from rest_framework import viewsets
 from .models import Profile
 from .serializers import ProfileSerializer
@@ -11,7 +10,7 @@ from rest_framework.response import Response
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_classes = [IsOwnerOrReadOnly]  # Apply the custom permission
+    permission_classes = [IsOwnerOrReadOnly]  # Apply custom permission
 
     def get_serializer_context(self):
         context = super(ProfileViewSet, self).get_serializer_context()
@@ -22,13 +21,21 @@ class ProfileViewSet(viewsets.ModelViewSet):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def user_details(request):
-    # Access the user from the request
     user = request.user
-    # Return the user details you need
+    profile = Profile.objects.get(
+        owner=user
+    )  # Get the profile associated with this user
+
+    # Construct the response with details from both the User and Profile models
     return Response(
         {
-            "username": user.username,
-            "email": user.email,
-            # Include other details from the user model or related models as needed
+            "username": user.username,  # This still uses the User model's username
+            "email": user.email,  # Email from the User model
+            "name": profile.name,  # Name from the Profile model
+            # Include other details from the Profile model as needed
+            "content": profile.content,
+            "image": request.build_absolute_uri(profile.image.url)
+            if profile.image
+            else None,
         }
     )
