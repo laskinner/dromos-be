@@ -3,6 +3,12 @@ from django.urls import path, include
 from edges.views import GraphData
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .views import root_route, logout_route
+from django.http import JsonResponse
+
+
+def root_test_view(request):
+    return JsonResponse({"message": "Root test endpoint is working"})
+
 
 urlpatterns = [
     path("", root_route),
@@ -13,6 +19,7 @@ urlpatterns = [
     path("api/nodes/", include("nodes.urls")),
     path("api/graph-data/<str:area_slug>/", GraphData.as_view(), name="graph-data"),
     path("api/comments/", include("comments.urls")),
+    path("api/root-test/", root_test_view, name="root-test"),
     path("api/subscriptions/", include("subscriptions.urls")),
     path("api/permissions/", include("permissions.urls")),
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
