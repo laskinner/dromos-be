@@ -7,6 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
@@ -24,17 +25,13 @@ class ProfileViewSet(viewsets.ModelViewSet):
 @permission_classes([IsAuthenticated])
 def user_details(request):
     user = request.user
-    profile = Profile.objects.get(
-        owner=user
-    )  # Get the profile associated with this user
+    profile = get_object_or_404(Profile, owner=user)
 
-    # Construct the response with details from both the User and Profile models
     return Response(
         {
-            "username": user.username,  # This still uses the User model's username
-            "email": user.email,  # Email from the User model
-            "name": profile.name,  # Name from the Profile model
-            # Include other details from the Profile model as needed
+            "username": user.username,
+            "email": user.email,
+            "name": profile.name,
             "content": profile.content,
             "image": request.build_absolute_uri(profile.image.url)
             if profile.image
