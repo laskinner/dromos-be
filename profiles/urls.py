@@ -13,6 +13,8 @@ router = DefaultRouter()
 router.register(r"", ProfileViewSet, basename="profile")
 
 urlpatterns = [
+    path("test-direct/", test_view, name="test-direct"),
+    path("user-direct/", user_details, name="user-direct"),
     path("", include(router.urls)),
     path("user/", user_details, name="user-details"),
     # Add the test endpoint
