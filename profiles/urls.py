@@ -10,7 +10,7 @@ def test_view(request):
 
 
 router = DefaultRouter()
-router.register(r"", ProfileViewSet, basename="profile")
+# router.register(r"", ProfileViewSet, basename="profile")
 
 urlpatterns = [
     path("test-direct/", test_view, name="test-direct"),
