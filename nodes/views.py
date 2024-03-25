@@ -2,7 +2,8 @@ from django.db.models import Count
 from rest_framework import viewsets, filters
 from .models import Node
 from edges.models import Edge
-from .serializers import NodeSerializer, EdgeSerializer
+from edges.serializers import EdgeSerializer
+from .serializers import NodeSerializer
 
 
 class NodeViewSet(viewsets.ModelViewSet):
