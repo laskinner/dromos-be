@@ -7,10 +7,9 @@ from edges.serializers import EdgeSerializer
 
 
 class GraphData(APIView):
-    def get(self, request, area_slug, format=None):
-        # Fetch nodes and edges related to the area to be displayed
-        nodes = Node.objects.filter(area__slug=area_slug)
-        edges = Edge.objects.filter(source__in=nodes, target__in=nodes)
+    def get(self, request, area_id, format=None):
+        nodes = Node.objects.filter(area_id=area_id)
+        edges = Edge.objects.filter(source__area_id=area_id)
 
         node_serializer = NodeSerializer(nodes, many=True)
         edge_serializer = EdgeSerializer(edges, many=True)

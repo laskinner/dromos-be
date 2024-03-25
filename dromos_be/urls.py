@@ -17,7 +17,7 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls")),
     path("api/areas/", include("areas.urls")),
     path("api/nodes/", include("nodes.urls")),
-    path("api/graph-data/<str:area_slug>/", GraphData.as_view(), name="graph-data"),
+    path("api/graph-data/<int:area_id>/", GraphData.as_view(), name="graph-data"),
     path("api/comments/", include("comments.urls")),
     path("api/root-test/", root_test_view, name="root-test"),
     path("api/subscriptions/", include("subscriptions.urls")),
