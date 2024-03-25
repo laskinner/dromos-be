@@ -1,6 +1,7 @@
 from django.db.models import Count
 from rest_framework import viewsets, filters
-from .models import Node, Edge
+from .models import Node
+from edges.models import Edge
 from .serializers import NodeSerializer, EdgeSerializer
 
 
