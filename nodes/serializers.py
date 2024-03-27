@@ -6,7 +6,7 @@ class NodeSerializer(serializers.ModelSerializer):
     comments_count = serializers.IntegerField(read_only=True)
     x = serializers.FloatField(default=0.0)  # Example fixed position
     y = serializers.FloatField(default=0.0)
-    size = serializers.FloatField(default=1.0)  # Default size
+    size = serializers.FloatField(default=10.0)  # Default size
     color = serializers.CharField(default="blue")  # Default color
     label = serializers.CharField(source="title")  # Use the title as label
 
