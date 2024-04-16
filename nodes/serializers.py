@@ -25,7 +25,7 @@ class NodeSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
             "owner",
-            "caused_by",  # Assuming you want to include the relationship
+            "caused_by",
             "comments_count",  # Include any additional fields here
             "x",
             "y",
@@ -33,6 +33,7 @@ class NodeSerializer(serializers.ModelSerializer):
             "color",
             "label",  # Visualization-specific fields
         ]
+        read_only_fields = ("owner",)
 
     def validate_caused_by(self, value):
         # Validate that a node cannot cause itself
