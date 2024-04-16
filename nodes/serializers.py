@@ -8,7 +8,9 @@ class NodeSerializer(serializers.ModelSerializer):
     y = serializers.FloatField(default=0.0)
     size = serializers.FloatField(default=10.0)  # Default size
     color = serializers.CharField(default="blue")  # Default color
-    label = serializers.CharField(source="title")  # Use the title as label
+    label = serializers.CharField(
+        source="title", required=False, allow_blank=True
+    )  # Use the title as label
 
     class Meta:
         model = Node
@@ -37,3 +39,7 @@ class NodeSerializer(serializers.ModelSerializer):
         if self.instance and self.instance in value:
             raise serializers.ValidationError("A node cannot cause itself.")
         return value
+
+    def validate(self, data):
+        data["label"] = data.get("label", data.get("title"))
+        return data

@@ -32,6 +32,10 @@ class NodeViewSet(viewsets.ModelViewSet):
 
         return queryset
 
+    def perform_create(self, serializer):
+        # Set the owner of the node to the currently authenticated user
+        serializer.save(owner=self.request.user)
+
 
 class EdgeViewSet(viewsets.ReadOnlyModelViewSet):
     """
