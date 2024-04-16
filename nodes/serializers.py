@@ -4,13 +4,8 @@ from .models import Node
 
 class NodeSerializer(serializers.ModelSerializer):
     comments_count = serializers.IntegerField(read_only=True)
-    x = serializers.FloatField(default=0.0)  # Example fixed position
-    y = serializers.FloatField(default=0.0)
-    size = serializers.FloatField(default=10.0)  # Default size
-    color = serializers.CharField(default="blue")  # Default color
-    label = serializers.CharField(
-        source="title", required=False, allow_blank=True
-    )  # Use the title as label
+    # Dynamic fields like x, y, color, and laber are not included
+    # as they are not included in model
 
     class Meta:
         model = Node
@@ -26,12 +21,7 @@ class NodeSerializer(serializers.ModelSerializer):
             "updated_at",
             "owner",
             "caused_by",
-            "comments_count",  # Include any additional fields here
-            "x",
-            "y",
-            "size",
-            "color",
-            "label",  # Visualization-specific fields
+            "comments_count",
         ]
         read_only_fields = ("owner",)
 
@@ -41,6 +31,21 @@ class NodeSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("A node cannot cause itself.")
         return value
 
-    def validate(self, data):
-        data["label"] = data.get("label", data.get("title"))
-        return data
+    def create(self, validated_data):
+        # Since the dynamic fields are not part of the Node model,
+        # they should not be included in validated_data
+        return super().create(validated_data)
+
+    def to_representation(self, instance):
+        """
+        You can override to_representation if you need
+        to send dynamic fields back in the response.
+        """
+        ret = super().to_representation(instance)
+        # Add dynamic fields to the response if needed
+        ret["x"] = 0.0  # Example dynamic value
+        ret["y"] = 0.0
+        ret["size"] = 10.0
+        ret["color"] = "blue"
+        ret["label"] = instance.title  # Use the title as label if needed
+        return ret
