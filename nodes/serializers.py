@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Node, Edge
+from .models import Node
+from edges.models import Edge
 
 
 class NodeSerializer(serializers.ModelSerializer):
