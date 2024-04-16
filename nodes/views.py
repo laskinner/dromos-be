@@ -4,6 +4,7 @@ from .models import Node
 from edges.models import Edge
 from edges.serializers import EdgeSerializer
 from .serializers import NodeSerializer
+from django.db import transaction
 
 
 class NodeViewSet(viewsets.ModelViewSet):
@@ -38,16 +39,28 @@ class NodeViewSet(viewsets.ModelViewSet):
                 "User must be authenticated to create a node."
             )
 
-        # First save the node to get a valid instance
-        node = serializer.save(owner=self.request.user)
+        with transaction.atomic():
+            node = serializer.save(owner=self.request.user)
 
-        # Then handle caused_by data if available
-        caused_by_ids = serializer.validated_data.get("caused_by", [])
-        for cause_id in caused_by_ids:
-            Edge.objects.create(source_id=cause_id, target=node)
-            print(f"Edge created from {cause_id} to {node.id}")
+            caused_by_ids = serializer.validated_data.get("caused_by", [])
+            if caused_by_ids:
+                valid_causes = Node.objects.filter(id__in=caused_by_ids).count()
+                if valid_causes != len(caused_by_ids):
+                    raise serializers.ValidationError(
+                        "One or more invalid cause IDs provided."
+                    )
 
-        print("Node and associated edges created successfully")
+                for cause_id in caused_by_ids:
+                    try:
+                        edge = Edge.objects.create(source_id=cause_id, target=node)
+                        print(f"Edge successfully created: {edge}")
+                    except Exception as e:
+                        print(
+                            f"Failed to create edge from {cause_id} to {node.id}: {str(e)}"
+                        )
+                        raise serializers.ValidationError("Failed to create edge.")
+
+            print("Node and associated edges created successfully")
 
 
 class EdgeViewSet(viewsets.ReadOnlyModelViewSet):
