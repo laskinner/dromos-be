@@ -33,16 +33,15 @@ class NodeViewSet(viewsets.ModelViewSet):
         return queryset
 
     def perform_create(self, serializer):
-        """Ensure user is authenticated and handle causedBy data for edge creation."""
         if not self.request.user.is_authenticated:
             raise serializers.ValidationError(
                 "User must be authenticated to create a node."
             )
 
-        # This will create the node and return the instance
+        # First save the node to get a valid instance
         node = serializer.save(owner=self.request.user)
 
-        # Now handle the 'causedBy' data if it exists
+        # Then handle caused_by data if available
         caused_by_ids = serializer.validated_data.get("caused_by", [])
         for cause_id in caused_by_ids:
             Edge.objects.create(source_id=cause_id, target=node)
