@@ -71,10 +71,11 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",  #  JWT
+        "rest_framework.authentication.SessionAuthentication",  # Optional for browser-based API navigation/testing
     ),
     "DEFAULT_PERMISSION_CLASSES": (
-        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",  # Keeps your API secure by default
     ),
 }
 
@@ -130,16 +131,16 @@ REST_AUTH_SERIALIZERS = {
 }
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "allauth.account.middleware.AccountMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",  # Handle cross-origin requests
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # Serve static files
+    "django.middleware.security.SecurityMiddleware",  # Various security enhancements
+    "django.contrib.sessions.middleware.SessionMiddleware",  # Manage user sessions
+    "django.middleware.common.CommonMiddleware",  # Various tasks such as blocking User-Agents, handling redirects, etc.
+    "django.middleware.csrf.CsrfViewMiddleware",  # Prevent CSRF attacks
+    "django.contrib.auth.middleware.AuthenticationMiddleware",  # Bind user to request
+    "django.contrib.messages.middleware.MessageMiddleware",  # Flash messages handling
+    "allauth.account.middleware.AccountMiddleware",  # Integration for django-allauth
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",  # Prevent clickjacking
 ]
 
 if "CLIENT_ORIGIN" in os.environ:

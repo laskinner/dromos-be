@@ -33,12 +33,16 @@ class NodeViewSet(viewsets.ModelViewSet):
         return queryset
 
     def perform_create(self, serializer):
+        """Ensure user is authenticated before creating a node."""
+        print("Request Headers:", self.request.headers)
         print("Logged in user:", self.request.user)
         print("Is authenticated:", self.request.user.is_authenticated)
+
         if not self.request.user.is_authenticated:
             raise serializers.ValidationError(
                 "User must be authenticated to create a node."
             )
+
         serializer.save(owner=self.request.user)
 
 
