@@ -1,5 +1,5 @@
 from django.db.models import Count
-from rest_framework import viewsets, filters
+from rest_framework import viewsets, filters, serializers
 from .models import Node
 from edges.models import Edge
 from edges.serializers import EdgeSerializer
@@ -33,7 +33,12 @@ class NodeViewSet(viewsets.ModelViewSet):
         return queryset
 
     def perform_create(self, serializer):
-        # Set the owner of the node to the currently authenticated user
+        print("Logged in user:", self.request.user)
+        print("Is authenticated:", self.request.user.is_authenticated)
+        if not self.request.user.is_authenticated:
+            raise serializers.ValidationError(
+                "User must be authenticated to create a node."
+            )
         serializer.save(owner=self.request.user)
 
 
