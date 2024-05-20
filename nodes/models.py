@@ -19,19 +19,16 @@ class Node(models.Model):
     image = models.ImageField(upload_to="images/", default="../ik2vexictnekhozluivi")
     area = models.ForeignKey(Area, on_delete=models.CASCADE, related_name="nodes")
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="draft")
+    x = models.FloatField(null=True, blank=True)
+    y = models.FloatField(null=True, blank=True)
+    caused_by = models.ManyToManyField(
+        "self", symmetrical=False, related_name="causes", blank=True
+    )
 
     def save(self, *args, **kwargs):
-        if not self.slug:  # If no slug has been provided, generate one from the title
+        if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-
-    # Assumes a many-to-amy relationship with other nodes
-    caused_by = models.ManyToManyField(
-        "self",
-        symmetrical=False,
-        related_name="causes",  # Outgoing edges: Nodes that this node causes
-        blank=True,
-    )
 
     def __str__(self):
         return self.title
