@@ -1,8 +1,13 @@
 from django.db.models import Count
-from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework import viewsets, permissions
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from .models import Area
 from .serializers import AreaSerializer
+from nodes.models import Node
+from edges.models import Edge
+from nodes.serializers import NodeSerializer
+from edges.serializers import EdgeSerializer
 
 
 class AreaViewSet(viewsets.ModelViewSet):
@@ -11,7 +16,9 @@ class AreaViewSet(viewsets.ModelViewSet):
     """
 
     serializer_class = AreaSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]  # Example permission class
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly
+    ]  # Example permission class
 
     def get_queryset(self):
         """
@@ -35,5 +42,17 @@ class AreaViewSet(viewsets.ModelViewSet):
 
             return accessible_areas.distinct()
 
-        # Optionally, override other methods as needed to implement custom logic,
-        # such as create() for handling area creation with specific permission checks.
+
+class GraphData(APIView):
+    def get(self, request, area_id, format=None):
+        nodes = Node.objects.filter(area_id=area_id)
+        edges = Edge.objects.filter(source__area_id=area_id)
+
+        node_serializer = NodeSerializer(nodes, many=True)
+        edge_serializer = EdgeSerializer(edges, many=True)
+
+        graph_data = {
+            "nodes": node_serializer.data,
+            "edges": edge_serializer.data,
+        }
+        return Response(graph_data)  # Use Response instead of JsonResponse

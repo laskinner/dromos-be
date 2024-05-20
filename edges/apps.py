@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class EdgesConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'edges'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "edges"

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from .models import Edge
+from areas.models import Area
 
 
 class AreaFilter(admin.SimpleListFilter):
@@ -8,8 +9,6 @@ class AreaFilter(admin.SimpleListFilter):
     parameter_name = "area"
 
     def lookups(self, request, model_admin):
-        from areas.models import Area  # Importing here to prevent unused import warning
-
         areas = Area.objects.all()
         return [(area.id, area.name) for area in areas]
 
@@ -24,7 +23,4 @@ class AreaFilter(admin.SimpleListFilter):
 class EdgeAdmin(admin.ModelAdmin):
     list_display = ("id", "source", "target")
     list_filter = (AreaFilter,)
-    readonly_fields = (
-        "source",
-        "target",
-    )
+    readonly_fields = ("source", "target")

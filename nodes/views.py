@@ -2,7 +2,6 @@ from django.db.models import Count
 from rest_framework import viewsets, filters, serializers
 from .models import Node
 from edges.models import Edge
-from edges.serializers import EdgeSerializer
 from .serializers import NodeSerializer
 from django.db import transaction
 
@@ -59,23 +58,3 @@ class NodeViewSet(viewsets.ModelViewSet):
                 raise serializers.ValidationError("Failed to create edge.")
             else:
                 print("No caused_by data provided")
-
-
-class EdgeViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    A ViewSet for listing edges. Assumes that edges are directly related to nodes (i.e., through foreign keys).
-    """
-
-    queryset = Edge.objects.all()
-    serializer_class = EdgeSerializer
-
-    def get_queryset(self):
-        """
-        Filters edges to include only those connecting nodes within the specified area.
-        """
-        area_id = self.kwargs.get("area_id")
-        if area_id:
-            nodes = Node.objects.filter(area_id=area_id).values_list("id", flat=True)
-            queryset = Edge.objects.filter(source_id__in=nodes, target_id__in=nodes)
-            return queryset
-        return super().get_queryset()

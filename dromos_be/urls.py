@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.urls import include, path
-from edges.views import GraphData
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .views import root_route, logout_route
 from django.http import JsonResponse
@@ -17,7 +16,7 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls")),
     path("api/areas/", include("areas.urls")),
     path("api/nodes/", include("nodes.urls")),
-    path("api/graph-data/<int:area_id>/", GraphData.as_view(), name="graph-data"),
+    path("api/edges/", include("edges.urls")),  # Include edges URLs
     path("api/comments/", include("comments.urls")),
     path("api/root-test/", root_test_view, name="root-test"),
     path("api/subscriptions/", include("subscriptions.urls")),

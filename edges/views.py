@@ -1,21 +1,24 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from nodes.models import Node
-from edges.models import Edge
-from nodes.serializers import NodeSerializer
-from edges.serializers import EdgeSerializer
+from rest_framework import viewsets
+from .models import Edge
+from .serializers import EdgeSerializer
+from nodes.models import Node  # Ensure Node is imported
 
 
-class GraphData(APIView):
-    def get(self, request, area_id, format=None):
-        nodes = Node.objects.filter(area_id=area_id)
-        edges = Edge.objects.filter(source__area_id=area_id)
+class EdgeViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    A ViewSet for listing edges. Assumes that edges are directly related to nodes (i.e., through foreign keys).
+    """
 
-        node_serializer = NodeSerializer(nodes, many=True)
-        edge_serializer = EdgeSerializer(edges, many=True)
+    queryset = Edge.objects.all()
+    serializer_class = EdgeSerializer
 
-        graph_data = {
-            "nodes": node_serializer.data,
-            "edges": edge_serializer.data,
-        }
-        return Response(graph_data)  # Use Response instead of JsonResponse
+    def get_queryset(self):
+        """
+        Filters edges to include only those connecting nodes within the specified area.
+        """
+        area_id = self.kwargs.get("area_id")
+        if area_id:
+            nodes = Node.objects.filter(area_id=area_id).values_list("id", flat=True)
+            queryset = Edge.objects.filter(source_id__in=nodes, target_id__in=nodes)
+            return queryset
+        return super().get_queryset()
