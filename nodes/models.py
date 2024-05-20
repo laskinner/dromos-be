@@ -21,9 +21,6 @@ class Node(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="draft")
     x = models.FloatField(null=True, blank=True)
     y = models.FloatField(null=True, blank=True)
-    caused_by = models.ManyToManyField(
-        "self", symmetrical=False, related_name="causes", blank=True
-    )
 
     def save(self, *args, **kwargs):
         if not self.slug:

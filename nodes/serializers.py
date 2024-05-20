@@ -14,5 +14,4 @@ class NodeSerializer(serializers.ModelSerializer):
             "status",
             "x",
             "y",
-            "caused_by",
         ]

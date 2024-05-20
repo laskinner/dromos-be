@@ -25,7 +25,6 @@ class NodeAdmin(admin.ModelAdmin):
         "area__name",
     )
     prepopulated_fields = {"slug": ("title",)}
-    filter_horizontal = ("caused_by",)
 
 
 admin.site.register(Node, NodeAdmin)
