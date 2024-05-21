@@ -23,4 +23,3 @@ class AreaFilter(admin.SimpleListFilter):
 class EdgeAdmin(admin.ModelAdmin):
     list_display = ("id", "source", "target")
     list_filter = (AreaFilter,)
-    readonly_fields = ("source", "target")

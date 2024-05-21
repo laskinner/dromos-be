@@ -1,16 +1,18 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, serializers
+from rest_framework.permissions import IsAuthenticated
 from .models import Edge
 from .serializers import EdgeSerializer
-from nodes.models import Node  # Ensure Node is imported
+from nodes.models import Node
 
 
-class EdgeViewSet(viewsets.ReadOnlyModelViewSet):
+class EdgeViewSet(viewsets.ModelViewSet):
     """
-    A ViewSet for listing edges. Assumes that edges are directly related to nodes (i.e., through foreign keys).
+    A ViewSet for listing and creating edges. Assumes that edges are directly related to nodes (i.e., through foreign keys).
     """
 
     queryset = Edge.objects.all()
     serializer_class = EdgeSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         """
