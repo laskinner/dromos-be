@@ -143,7 +143,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",  # Various security enhancements
     "django.contrib.sessions.middleware.SessionMiddleware",  # Manage user sessions
     "django.middleware.common.CommonMiddleware",  # Various tasks such as blocking User-Agents, handling redirects, etc.
-    "django.middleware.csrf.CsrfViewMiddleware",  # Prevent CSRF attacks
+    # "django.middleware.csrf.CsrfViewMiddleware",  # Prevent CSRF attacks
     "django.contrib.auth.middleware.AuthenticationMiddleware",  # Bind user to request
     "django.contrib.messages.middleware.MessageMiddleware",  # Flash messages handling
     "allauth.account.middleware.AccountMiddleware",  # Integration for django-allauth
