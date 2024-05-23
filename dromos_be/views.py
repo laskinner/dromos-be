@@ -1,6 +1,8 @@
 from django.conf import settings
+from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.http import JsonResponse
 
 
 @api_view()
@@ -30,3 +32,8 @@ def logout_route(request):
         secure=settings.JWT_AUTH_SECURE,  # Access setting via django.conf.settings
     )
     return response
+
+
+@ensure_csrf_cookie
+def set_csrf_token(request):
+    return JsonResponse({"detail": "CSRF cookie set"})

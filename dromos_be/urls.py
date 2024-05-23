@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from .views import root_route, logout_route
+from .views import root_route, logout_route, set_csrf_token
 from django.http import JsonResponse
 
 
@@ -29,4 +29,6 @@ urlpatterns = [
     path("dj-rest-auth/", include("dj_rest_auth.urls")),
     # dj-rest-auth registration URLs
     path("dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),
+    # CSRF token setting endpoint
+    path("set-csrf-token/", set_csrf_token, name="set-csrf-token"),
 ]
