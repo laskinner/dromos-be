@@ -20,6 +20,9 @@ class ProfileViewSet(viewsets.ModelViewSet):
         context.update({"request": self.request})
         return context
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
