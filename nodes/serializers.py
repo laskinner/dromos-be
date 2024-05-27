@@ -14,4 +14,5 @@ class NodeSerializer(serializers.ModelSerializer):
             "status",
             "x",
             "y",
+            "owner",
         ]
