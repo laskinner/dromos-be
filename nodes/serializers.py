@@ -3,7 +3,7 @@ from .models import Node
 
 
 class NodeSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source="owner.username")
+    owner = serializers.ReadOnlyField(source="owner.id")
 
     class Meta:
         model = Node
