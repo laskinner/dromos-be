@@ -3,6 +3,8 @@ from .models import Node
 
 
 class NodeSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source="owner.username")
+
     class Meta:
         model = Node
         fields = [
@@ -14,4 +16,5 @@ class NodeSerializer(serializers.ModelSerializer):
             "status",
             "x",
             "y",
+            "owner",
         ]
