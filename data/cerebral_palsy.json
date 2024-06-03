@@ -1,0 +1,211 @@
+{
+  "nodes": [
+    { "id": "Antepartum haemorrhage", "x": -1.3, "y": -1.277 },
+    { "id": "Brain injury", "x": 0.467, "y": -1.02 },
+    { "id": "Brain malformation", "x": -1.051, "y": -1.866 },
+    { "id": "Brain surgery/medical intervention", "x": -0.125, "y": -1.404 },
+    { "id": "Carbon monoxide inhalation", "x": -0.245, "y": -0.206 },
+    { "id": "Cardiac arrest", "x": -0.431, "y": -0.741 },
+    { "id": "Cardiac surgery/medical intervention", "x": -0.624, "y": -1.183 },
+    { "id": "Cephalopelvic disproportion", "x": -1.178, "y": -0.432 },
+    { "id": "Cerebral haemorrhage", "x": -0.912, "y": -0.9 },
+    { "id": "Cerebral hypoxia/ischaemia", "x": -0.494, "y": -0.43 },
+    { "id": "Cerebral sinovenous thrombosis", "x": -0.861, "y": -1.514 },
+    { "id": "Chorioamnionitis/funisitis", "x": -1.362, "y": -0.73 },
+    { "id": "Co-Fetal Death", "x": -1.552, "y": -1.636 },
+    { "id": "Consanguinous Parents", "x": -1.574, "y": -1.149 },
+    { "id": "Cord prolapse", "x": -1.114, "y": 0.025 },
+    { "id": "Encephalitis/meningitis", "x": 0.049, "y": -1.771 },
+    { "id": "Family History", "x": -1.541, "y": -0.258 },
+    { "id": "Fertility Treatment", "x": -1.575, "y": -1.464 },
+    { "id": "Fetal Genetics", "x": -1.599, "y": -0.765 },
+    { "id": "Fetal Inflammation", "x": -1.001, "y": -1.211 },
+    { "id": "Fetal hypoxia", "x": -0.992, "y": -1.567 },
+    { "id": "Fetal infection", "x": -1.253, "y": -1.997 },
+    { "id": "Fetal ischemia", "x": -0.956, "y": -1.059 },
+    { "id": "Folic Acid Status", "x": -1.471, "y": -1.331 },
+    {
+      "id": "Gastroenteritis with severe dehydration",
+      "x": -0.487,
+      "y": -1.762
+    },
+    { "id": "Gestational Age", "x": -1.281, "y": -1.481 },
+    { "id": "Gestational diabetes", "x": -1.463, "y": -1.773 },
+    { "id": "Grey matter lesions", "x": -0.817, "y": -1.219 },
+    { "id": "Heart Malformation", "x": -1.191, "y": -0.765 },
+    { "id": "Hypoglycaemic coma", "x": 0.013, "y": -0.091 },
+    { "id": "Infant malnutrition", "x": -0.539, "y": -2.026 },
+    { "id": "Interpregnancy interval", "x": -1.486, "y": -0.646 },
+    { "id": "Intrapartum haemorrhage", "x": -1.151, "y": -0.262 },
+    { "id": "Intrauterine Growth Restriction", "x": -1.068, "y": -1.698 },
+    { "id": "Malpresentation/malposition in labour", "x": -0.994, "y": -0.374 },
+    { "id": "Maternal Age", "x": -1.58, "y": -0.398 },
+    { "id": "Maternal Auto-immune Conditions", "x": -0.841, "y": -1.945 },
+    { "id": "Maternal Diabetes Mellitus", "x": -1.303, "y": -1.853 },
+    { "id": "Maternal Genetics", "x": -1.431, "y": -0.971 },
+    { "id": "Maternal Inflammatory State", "x": -1.03, "y": -2.007 },
+    { "id": "Maternal Iodine Status", "x": -0.902, "y": -1.348 },
+    { "id": "Maternal Mental Health Conditions", "x": -1.38, "y": -0.337 },
+    { "id": "Maternal Stature", "x": -1.399, "y": 0.025 },
+    { "id": "Maternal Thyroid Disease", "x": -0.795, "y": -1.095 },
+    { "id": "Maternal Tobacco Smoke Exposure", "x": -1.196, "y": -0.582 },
+    { "id": "Maternal Trauma", "x": -1.083, "y": -1.35 },
+    { "id": "Maternal body composition", "x": -1.293, "y": -1.659 },
+    { "id": "Maternal infection", "x": -1.441, "y": -1.527 },
+    { "id": "Maternal nutrition", "x": -1.257, "y": -0.026 },
+    { "id": "Maternal substance use", "x": -1.423, "y": -0.494 },
+    { "id": "Meconium aspiration", "x": -0.828, "y": -0.264 },
+    { "id": "Membrane rupture", "x": -1.271, "y": -1.114 },
+    { "id": "Multiple Fetuses", "x": -1.606, "y": -1.845 },
+    { "id": "NE/HIE", "x": -0.701, "y": -0.299 },
+    { "id": "Near-drowning", "x": -0.631, "y": -0.651 },
+    { "id": "Near-miss SIDS", "x": 0.014, "y": -0.522 },
+    { "id": "Neonatal infection/sepsis", "x": -0.777, "y": -0.805 },
+    {
+      "id": "Neonatal respiratory distress syndrome",
+      "x": -0.795,
+      "y": -1.651
+    },
+    { "id": "Neonatal seizures", "x": -0.717, "y": -0.514 },
+    { "id": "Non-accidental/abusive head trauma", "x": 0.295, "y": -0.59 },
+    { "id": "Obstructed/prolonged labour", "x": -0.935, "y": -0.531 },
+    { "id": "Other accidental head injury", "x": 0.208, "y": -0.741 },
+    { "id": "Oxidative stress", "x": -0.748, "y": -1.808 },
+    { "id": "PNN-CP", "x": 0.538, "y": -1.232 },
+    { "id": "Paternal genetics", "x": -1.591, "y": -0.954 },
+    { "id": "Perinatal stroke", "x": -0.905, "y": -0.752 },
+    { "id": "Placental abruption", "x": -1.243, "y": -0.964 },
+    { "id": "Placental insufficiency", "x": -1.084, "y": -1.013 },
+    { "id": "Prior caesarean section", "x": -1.34, "y": -0.189 },
+    { "id": "Prior preterm birth", "x": -1.573, "y": -0.037 },
+    { "id": "Prolonged ROM", "x": -0.79, "y": -0.954 },
+    { "id": "Prolonged induction", "x": -1.027, "y": -0.69 },
+    { "id": "RDS of non-infectious origin", "x": -0.036, "y": -0.262 },
+    { "id": "Road traffic accident", "x": 0.253, "y": -0.404 },
+    { "id": "Sepsis/septicaemia (severe)", "x": 0.232, "y": -1.966 },
+    { "id": "Sex of Fetus", "x": -1.615, "y": -0.557 },
+    { "id": "Short cervix", "x": -1.413, "y": -1.149 },
+    { "id": "Shoulder dystocia", "x": -1.142, "y": -0.11 },
+    { "id": "Status epilepticus", "x": 0.253, "y": -0.069 },
+    { "id": "Subdural/subarachnoid haemorrhage", "x": -0.938, "y": -0.073 },
+    { "id": "Twin Transfusion", "x": -1.51, "y": -1.949 },
+    { "id": "Umbilical cord true knot", "x": -0.988, "y": -0.194 },
+    { "id": "Uterine rupture", "x": -1.078, "y": -0.852 },
+    { "id": "Viral/bacterial infection", "x": -0.296, "y": -1.996 },
+    { "id": "White matter lesions", "x": -0.715, "y": -1.383 },
+    { "id": "Birthweight", "x": -1.132, "y": -1.172 },
+    { "id": "CVA", "x": -0.44, "y": -0.983 },
+    { "id": "Electrocution", "x": -0.245, "y": 0.039 },
+    { "id": "Epilepsy", "x": 0.113, "y": 0.025 },
+    { "id": "Falls", "x": 0.456, "y": -0.179 },
+    { "id": "Hypoglycaemia", "x": -0.706, "y": -0.07 },
+    { "id": "Kernicterus", "x": -0.807, "y": -0.4 },
+    { "id": "Oligohydramnia", "x": -0.915, "y": -1.791 },
+    { "id": "Parity", "x": -1.478, "y": -0.805 },
+    { "id": "Polyhydramnia", "x": -1.116, "y": -1.514 },
+    { "id": "Preeclampsia", "x": -1.376, "y": -1.986 },
+    { "id": "SES", "x": -1.576, "y": -1.324 }
+  ],
+  "edges": [
+    { "source": "Brain injury", "target": "PNN-CP" },
+    {
+      "source": "Brain surgery/medical intervention",
+      "target": "Brain injury"
+    },
+    {
+      "source": "Brain surgery/medical intervention",
+      "target": "Cardiac arrest"
+    },
+    {
+      "source": "Brain surgery/medical intervention",
+      "target": "Cerebral hypoxia/ischaemia"
+    },
+    {
+      "source": "Carbon monoxide inhalation",
+      "target": "Cerebral hypoxia/ischaemia"
+    },
+    { "source": "Cardiac arrest", "target": "Cerebral hypoxia/ischaemia" },
+    {
+      "source": "Cardiac surgery/medical intervention",
+      "target": "Brain injury"
+    },
+    {
+      "source": "Cardiac surgery/medical intervention",
+      "target": "Cardiac arrest"
+    },
+    {
+      "source": "Cardiac surgery/medical intervention",
+      "target": "Cerebral hypoxia/ischaemia"
+    },
+    { "source": "Cardiac surgery/medical intervention", "target": "CVA" },
+    { "source": "Cerebral hypoxia/ischaemia", "target": "Brain injury" },
+    { "source": "Encephalitis/meningitis", "target": "Brain injury" },
+    { "source": "Fetal Genetics", "target": "Heart Malformation" },
+    {
+      "source": "Gastroenteritis with severe dehydration",
+      "target": "Brain injury"
+    },
+    { "source": "Gastroenteritis with severe dehydration", "target": "CVA" },
+    { "source": "Gestational Age", "target": "Infant malnutrition" },
+    { "source": "Heart Malformation", "target": "Cardiac arrest" },
+    {
+      "source": "Heart Malformation",
+      "target": "Cardiac surgery/medical intervention"
+    },
+    { "source": "Heart Malformation", "target": "Cerebral hypoxia/ischaemia" },
+    { "source": "Heart Malformation", "target": "CVA" },
+    { "source": "Hypoglycaemic coma", "target": "Cerebral hypoxia/ischaemia" },
+    {
+      "source": "Infant malnutrition",
+      "target": "Gastroenteritis with severe dehydration"
+    },
+    { "source": "Infant malnutrition", "target": "Viral/bacterial infection" },
+    { "source": "Maternal Genetics", "target": "Heart Malformation" },
+    { "source": "Maternal Tobacco Smoke Exposure", "target": "Near-miss SIDS" },
+    { "source": "Near-drowning", "target": "Cardiac arrest" },
+    { "source": "Near-drowning", "target": "Cerebral hypoxia/ischaemia" },
+    { "source": "Near-miss SIDS", "target": "Cerebral hypoxia/ischaemia" },
+    {
+      "source": "Non-accidental/abusive head trauma",
+      "target": "Brain injury"
+    },
+    { "source": "Other accidental head injury", "target": "Brain injury" },
+    {
+      "source": "RDS of non-infectious origin",
+      "target": "Cerebral hypoxia/ischaemia"
+    },
+    { "source": "Road traffic accident", "target": "Brain injury" },
+    { "source": "Sepsis/septicaemia (severe)", "target": "Brain injury" },
+    {
+      "source": "Sepsis/septicaemia (severe)",
+      "target": "Cerebral hypoxia/ischaemia"
+    },
+    {
+      "source": "Sepsis/septicaemia (severe)",
+      "target": "Encephalitis/meningitis"
+    },
+    { "source": "Status epilepticus", "target": "Brain injury" },
+    { "source": "Status epilepticus", "target": "Cerebral hypoxia/ischaemia" },
+    {
+      "source": "Viral/bacterial infection",
+      "target": "Encephalitis/meningitis"
+    },
+    {
+      "source": "Viral/bacterial infection",
+      "target": "Gastroenteritis with severe dehydration"
+    },
+    { "source": "Viral/bacterial infection", "target": "Near-miss SIDS" },
+    {
+      "source": "Viral/bacterial infection",
+      "target": "Sepsis/septicaemia (severe)"
+    },
+    { "source": "CVA", "target": "Brain injury" },
+    { "source": "Electrocution", "target": "Cardiac arrest" },
+    { "source": "Electrocution", "target": "Cerebral hypoxia/ischaemia" },
+    { "source": "Epilepsy", "target": "Brain surgery/medical intervention" },
+    { "source": "Epilepsy", "target": "Status epilepticus" },
+    { "source": "Falls", "target": "Brain injury" },
+    { "source": "Hypoglycaemia", "target": "Hypoglycaemic coma" },
+    { "source": "Hypoglycaemia", "target": "Falls" }
+  ]
+}
