@@ -29,18 +29,8 @@ class ProfileViewSet(viewsets.ModelViewSet):
 def user_details(request):
     user = request.user
     profile = get_object_or_404(Profile, owner=user)
-
-    return Response(
-        {
-            "username": user.username,
-            "email": user.email,
-            "name": profile.name,
-            "content": profile.content,
-            "image": request.build_absolute_uri(profile.image.url)
-            if profile.image
-            else None,
-        }
-    )
+    serializer = ProfileSerializer(profile, context={"request": request})
+    return Response(serializer.data)
 
 
 @login_required

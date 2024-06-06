@@ -17,7 +17,7 @@ class Command(BaseCommand):
         with open(json_file, "r") as file:
             data = json.load(file)
 
-        area_id = 5
+        area_id = 7
         area = Area.objects.get(id=area_id)
 
         # Import nodes
