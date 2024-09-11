@@ -21,14 +21,17 @@ urlpatterns = [
     path("api/root-test/", root_test_view, name="root-test"),
     path("api/subscriptions/", include("subscriptions.urls")),
     path("api/permissions/", include("permissions.urls")),
-    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/token/", TokenObtainPairView.as_view(),
+        name="token_obtain_pair"),
+    path("api/token/refresh/", TokenRefreshView.as_view(),
+        name="token_refresh"),
     # Custom logout before the default dj-rest-auth logout to ensure it's used
     path("dj-rest-auth/logout/", logout_route, name="custom_logout"),
     # dj-rest-auth URLs for authentication
     path("dj-rest-auth/", include("dj_rest_auth.urls")),
     # dj-rest-auth registration URLs
-    path("dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),
+    path("dj-rest-auth/registration/",
+        include("dj_rest_auth.registration.urls")),
     # CSRF token setting endpoint
     path("set-csrf-token/", set_csrf_token, name="set-csrf-token"),
 ]
