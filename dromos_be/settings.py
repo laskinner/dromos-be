@@ -39,8 +39,11 @@ DEBUG = os.environ.get("DEV") == "1"
 
 ALLOWED_HOSTS = ["localhost", os.environ.get("ALLOWED_HOST"), "127.0.0.1"]
 
-# Read CSRF_TRUSTED_ORIGINS from environment variable
 CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",")
+# Ensure the URLs include the full scheme (https://)
+CSRF_TRUSTED_ORIGINS = [
+    origin if origin.startswith("http") else f"https://{origin}" for origin in CSRF_TRUSTED_ORIGINS
+]
 
 CORS_ALLOWED_ORIGINS = [
     "https://dromos-0a9ced476e6f.herokuapp.com",
